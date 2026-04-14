@@ -1,2 +1,705 @@
 # LissriquelmeCoach.github.io
 Proyecto Aura - Portafolio de Estrategia
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Aura - Portfolio</title>
+    <style>
+      :root {
+        --fuchsia: #D4537E;
+        --fuchsia-light: #FBEAF0;
+        --fuchsia-dark: #72243E;
+        --rose: #F4C0D1;
+        --nude: #F5EDE8;
+        --nude-dark: #C8A99A;
+        --white: #FFFFFF;
+        --text: #2C2C2C;
+        --text-soft: #7A7A7A;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      body { 
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--white);
+        color: var(--text);
+      }
+
+      .port { max-width: 780px; margin: 0 auto; padding: 2rem 1rem; }
+
+      .hero {
+        text-align: center;
+        padding: 3rem 2rem 2.5rem;
+        background: linear-gradient(160deg, #FBEAF0 0%, #FAF0F5 60%, #FFF8F5 100%);
+        border-radius: 20px;
+        border: 0.5px solid #F4C0D1;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .aura-circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.12;
+      }
+      .c1 { width: 220px; height: 220px; background: #D4537E; top: -60px; right: -40px; }
+      .c2 { width: 150px; height: 150px; background: #F4C0D1; bottom: -40px; left: -30px; }
+
+      .badge {
+        display: inline-block;
+        background: #FBEAF0;
+        color: #72243E;
+        border: 0.5px solid #F4C0D1;
+        border-radius: 20px;
+        font-size: 12px;
+        padding: 4px 14px;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+        font-weight: 500;
+        color: #72243E;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero h1 span { color: #D4537E; }
+
+      .hero p {
+        font-size: 15px;
+        color: #993556;
+        max-width: 480px;
+        margin: 0 auto 1.5rem;
+        line-height: 1.7;
+      }
+
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .tag {
+        background: white;
+        border: 0.5px solid #F4C0D1;
+        color: #993556;
+        border-radius: 20px;
+        font-size: 12px;
+        padding: 5px 14px;
+      }
+
+      .section {
+        background: var(--white);
+        border: 0.5px solid #E8E8E8;
+        border-radius: 16px;
+        padding: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.25rem;
+      }
+
+      .icon-pill {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        flex-shrink: 0;
+        background: #FBEAF0;
+      }
+
+      .section-title {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text);
+      }
+
+      .section-sub {
+        font-size: 13px;
+        color: var(--text-soft);
+        margin-top: 1px;
+      }
+
+      .model-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .model-card {
+        background: #F9F9F9;
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        border: 0.5px solid #E8E8E8;
+      }
+
+      .model-card.featured {
+        border: 1.5px solid #D4537E;
+        background: #FBEAF0;
+      }
+
+      .model-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: #72243E;
+        margin-bottom: 4px;
+      }
+
+      .model-price {
+        font-size: 22px;
+        font-weight: 500;
+        color: #D4537E;
+        margin-bottom: 8px;
+      }
+
+      .model-price span { font-size: 13px; color: #993556; }
+
+      .model-features { list-style: none; }
+      .model-features li {
+        font-size: 12px;
+        color: var(--text-soft);
+        padding: 3px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+      }
+
+      .model-features li::before {
+        content: '';
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #D4537E;
+        margin-top: 5px;
+        flex-shrink: 0;
+      }
+
+      .roadmap { display: flex; flex-direction: column; gap: 0; }
+
+      .rm-item {
+        display: flex;
+        gap: 14px;
+        padding-bottom: 20px;
+        position: relative;
+      }
+
+      .rm-item:last-child { padding-bottom: 0; }
+
+      .rm-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 32px;
+        flex-shrink: 0;
+      }
+
+      .rm-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: #FBEAF0;
+        border: 2px solid #D4537E;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 500;
+        color: #72243E;
+        flex-shrink: 0;
+      }
+
+      .rm-dot.active {
+        background: #D4537E;
+        color: white;
+      }
+
+      .rm-line {
+        width: 1.5px;
+        flex: 1;
+        background: #F4C0D1;
+        margin-top: 4px;
+      }
+
+      .rm-content { flex: 1; }
+
+      .rm-phase {
+        font-size: 11px;
+        font-weight: 500;
+        color: #D4537E;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+      }
+
+      .rm-title {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .rm-desc {
+        font-size: 12px;
+        color: var(--text-soft);
+        line-height: 1.6;
+      }
+
+      .mktg-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .mktg-card {
+        background: #F9F9F9;
+        border: 0.5px solid #E8E8E8;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .mktg-icon {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+
+      .mktg-name {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+
+      .mktg-desc {
+        font-size: 11px;
+        color: var(--text-soft);
+        line-height: 1.5;
+      }
+
+      .fin-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 1rem;
+      }
+
+      .fin-card {
+        background: #F9F9F9;
+        border-radius: 10px;
+        padding: 0.85rem 1rem;
+        text-align: center;
+      }
+
+      .fin-label {
+        font-size: 11px;
+        color: var(--text-soft);
+        margin-bottom: 4px;
+      }
+
+      .fin-val {
+        font-size: 20px;
+        font-weight: 500;
+        color: #D4537E;
+      }
+
+      .fin-period {
+        font-size: 10px;
+        color: var(--text-soft);
+        margin-top: 2px;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .res-card {
+        background: #FBEAF0;
+        border: 0.5px solid #F4C0D1;
+        border-radius: 12px;
+        padding: 1rem 1.1rem;
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .res-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+      }
+
+      .res-title {
+        font-size: 13px;
+        font-weight: 500;
+        color: #72243E;
+        margin-bottom: 3px;
+      }
+
+      .res-desc {
+        font-size: 11px;
+        color: #993556;
+        line-height: 1.5;
+      }
+
+      .cta-section {
+        text-align: center;
+        background: #FBEAF0;
+        border: 0.5px solid #F4C0D1;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .cta-title {
+        font-size: 18px;
+        font-weight: 500;
+        color: #72243E;
+        margin-bottom: 8px;
+      }
+
+      .cta-sub {
+        font-size: 14px;
+        color: #993556;
+        margin-bottom: 1.25rem;
+      }
+
+      .cta-btn {
+        display: inline-block;
+        background: #D4537E;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 32px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.15s;
+      }
+
+      .cta-btn:hover { opacity: 0.88; }
+
+      .nav-tabs {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+        background: #F9F9F9;
+        padding: 6px;
+        border-radius: 14px;
+      }
+
+      .nav-tab {
+        flex: 1;
+        min-width: 80px;
+        background: transparent;
+        border: none;
+        border-radius: 10px;
+        padding: 8px 10px;
+        font-size: 12px;
+        color: var(--text-soft);
+        cursor: pointer;
+        transition: all 0.15s;
+        font-family: inherit;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+
+      .nav-tab.active {
+        background: white;
+        color: #D4537E;
+        font-weight: 500;
+        border: 0.5px solid #F4C0D1;
+      }
+
+      .section-panel { display: none; }
+      .section-panel.visible { display: block; }
+
+      @media (max-width: 500px) {
+        .model-grid, .fin-grid, .mktg-grid, .resources-grid { grid-template-columns: 1fr; }
+        .hero h1 { font-size: 1.8rem; }
+      }
+    </style>
+</head>
+<body>
+<div class="port">
+  <div class="hero">
+    <div class="aura-circle c1"></div>
+    <div class="aura-circle c2"></div>
+    <div class="badge">Portafolio de Estrategia · 2024</div>
+    <h1>Proyecto <span>Aura</span></h1>
+    <p>Acompañamiento para mujeres que quieren potenciar sus habilidades, desbloquear limitantes y escalar sus negocios al siguiente nivel.</p>
+    <div class="hero-tags">
+      <span class="tag">Acompañamiento personal</span>
+      <span class="tag">Growth Partner</span>
+      <span class="tag">Escala tu negocio</span>
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('modelo')">Modelo de negocio</button>
+    <button class="nav-tab" onclick="showTab('roadmap')">Roadmap</button>
+    <button class="nav-tab" onclick="showTab('marketing')">Marketing</button>
+    <button class="nav-tab" onclick="showTab('financiero')">Plan financiero</button>
+    <button class="nav-tab" onclick="showTab('recursos')">Recursos gratuitos</button>
+  </div>
+
+  <div id="modelo" class="section-panel visible">
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-pill">✦</div>
+        <div>
+          <div class="section-title">Modelo de negocio</div>
+          <div class="section-sub">Dos niveles de acompañamiento para cada etapa</div>
+        </div>
+      </div>
+      <div class="model-grid">
+        <div class="model-card">
+          <div class="model-name">Nivel 1 · Aura</div>
+          <div class="model-price">$97 <span>/ mes</span></div>
+          <ul class="model-features">
+            <li>Sesiones de acompañamiento personal</li>
+            <li>Herramientas para desbloquear limitantes</li>
+            <li>Comunidad de mujeres emprendedoras</li>
+            <li>Recursos digitales exclusivos</li>
+            <li>Acceso a talleres mensuales</li>
+          </ul>
+        </div>
+        <div class="model-card featured">
+          <div class="model-name">Nivel 2 · Growth Partner</div>
+          <div class="model-price">$297 <span>/ mes</span></div>
+          <ul class="model-features">
+            <li>Todo lo del Nivel 1</li>
+            <li>Estrategia personalizada de crecimiento</li>
+            <li>Mentoría 1:1 semanal</li>
+            <li>Auditoría de negocio incluida</li>
+            <li>Soporte directo por WhatsApp</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="roadmap" class="section-panel">
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-pill">◈</div>
+        <div>
+          <div class="section-title">Roadmap de crecimiento</div>
+          <div class="section-sub">Del lanzamiento a la escala en 12 meses</div>
+        </div>
+      </div>
+      <div class="roadmap">
+        <div class="rm-item">
+          <div class="rm-left">
+            <div class="rm-dot active">1</div>
+            <div class="rm-line"></div>
+          </div>
+          <div class="rm-content">
+            <div class="rm-phase">Mes 1–2 · Fundación</div>
+            <div class="rm-title">Lanzamiento y primeras clientas</div>
+            <div class="rm-desc">Definición del perfil ideal, landing page lista, primeras 10 clientas beta con descuento especial, validación del programa.</div>
+          </div>
+        </div>
+        <div class="rm-item">
+          <div class="rm-left">
+            <div class="rm-dot">2</div>
+            <div class="rm-line"></div>
+          </div>
+          <div class="rm-content">
+            <div class="rm-phase">Mes 3–5 · Tracción</div>
+            <div class="rm-title">Construcción de comunidad y contenido</div>
+            <div class="rm-desc">Lanzamiento orgánico en redes, estrategia de contenido semanal, primeros testimonios y casos de éxito, referidos activos.</div>
+          </div>
+        </div>
+        <div class="rm-item">
+          <div class="rm-left">
+            <div class="rm-dot">3</div>
+            <div class="rm-line"></div>
+          </div>
+          <div class="rm-content">
+            <div class="rm-phase">Mes 6–8 · Escala</div>
+            <div class="rm-title">Automatización y pauta pagada</div>
+            <div class="rm-desc">Embudo de ventas automatizado, webinars de captación, inicio de inversión en Meta Ads, lanzamiento del Nivel 2 Growth Partner.</div>
+          </div>
+        </div>
+        <div class="rm-item">
+          <div class="rm-left">
+            <div class="rm-dot">4</div>
+          </div>
+          <div class="rm-content">
+            <div class="rm-phase">Mes 9–12 · Consolidación</div>
+            <div class="rm-title">Programa grupal y posicionamiento</div>
+            <div class="rm-desc">Primer grupo intensivo, colaboraciones con otras marcas femeninas, programa de afiliadas, meta: 50+ clientas activas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="marketing" class="section-panel">
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-pill">◉</div>
+        <div>
+          <div class="section-title">Estrategia de marketing</div>
+          <div class="section-sub">Canales y acciones para atraer a tu clienta ideal</div>
+        </div>
+      </div>
+      <div class="mktg-grid">
+        <div class="mktg-card">
+          <div class="mktg-icon">📱</div>
+          <div class="mktg-name">Instagram & TikTok</div>
+          <div class="mktg-desc">Contenido de valor diario: tips de mentalidad, historias de transformación, behind the scenes.</div>
+        </div>
+        <div class="mktg-card">
+          <div class="mktg-icon">🎙️</div>
+          <div class="mktg-name">Webinars gratuitos</div>
+          <div class="mktg-desc">Evento mensual para captar leads y mostrar resultados reales del programa.</div>
+        </div>
+        <div class="mktg-card">
+          <div class="mktg-icon">💌</div>
+          <div class="mktg-name">Email marketing</div>
+          <div class="mktg-desc">Secuencia de bienvenida automatizada, newsletter semanal con recursos exclusivos.</div>
+        </div>
+        <div class="mktg-card">
+          <div class="mktg-icon">🤝</div>
+          <div class="mktg-name">Referidos & afiliadas</div>
+          <div class="mktg-desc">Programa de referidos con comisiones para clientas actuales que traigan nuevas.</div>
+        </div>
+        <div class="mktg-card">
+          <div class="mktg-icon">📣</div>
+          <div class="mktg-name">Meta Ads</div>
+          <div class="mktg-desc">Pauta pagada en Facebook e Instagram a partir del mes 6, cuando hay casos de éxito probados.</div>
+        </div>
+        <div class="mktg-card">
+          <div class="mktg-icon">🌐</div>
+          <div class="mktg-name">Comunidad privada</div>
+          <div class="mktg-desc">Grupo cerrado para clientas, genera pertenencia, retención y contenido orgánico de boca a boca.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="financiero" class="section-panel">
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-pill">◎</div>
+        <div>
+          <div class="section-title">Plan financiero</div>
+          <div class="section-sub">Proyección conservadora año 1</div>
+        </div>
+      </div>
+      <div class="fin-grid">
+        <div class="fin-card">
+          <div class="fin-label">Meta clientas mes 6</div>
+          <div class="fin-val">20</div>
+          <div class="fin-period">clientas activas</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-label">Ingreso mensual mes 6</div>
+          <div class="fin-val">$2.9k</div>
+          <div class="fin-period">USD proyectado</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-label">Meta mes 12</div>
+          <div class="fin-val">50+</div>
+          <div class="fin-period">clientas activas</div>
+        </div>
+      </div>
+      <div class="fin-grid">
+        <div class="fin-card">
+          <div class="fin-label">Ingreso anual estimado</div>
+          <div class="fin-val">$25k</div>
+          <div class="fin-period">USD año 1</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-label">Ticket promedio</div>
+          <div class="fin-val">$147</div>
+          <div class="fin-period">por clienta / mes</div>
+        </div>
+        <div class="fin-card">
+          <div class="fin-label">Inversión inicial</div>
+          <div class="fin-val">$500</div>
+          <div class="fin-period">herramientas + pauta</div>
+        </div>
+      </div>
+      <div style="background: #F9F9F9; border-radius: 10px; padding: 0.9rem 1rem; font-size: 12px; color: var(--text-soft); line-height: 1.6;">
+        Proyección basada en mix 70% Nivel 1 · 30% Nivel 2. Los valores pueden ajustarse según precio en tu mercado local (CLP, ARS, MXN, etc.).
+      </div>
+    </div>
+  </div>
+
+  <div id="recursos" class="section-panel">
+    <div class="section">
+      <div class="section-header">
+        <div class="icon-pill">❋</div>
+        <div>
+          <div class="section-title">Recursos gratuitos</div>
+          <div class="section-sub">Herramientas para comenzar tu transformación hoy</div>
+        </div>
+      </div>
+      <div class="resources-grid">
+        <div class="res-card">
+          <div class="res-icon">📋</div>
+          <div>
+            <div class="res-title">Diagnóstico de limitantes</div>
+            <div class="res-desc">Test gratuito para identificar las creencias que frenan tu crecimiento personal y de negocio.</div>
+          </div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon">📖</div>
+          <div>
+            <div class="res-title">Guía: Enciende tu Aura</div>
+            <div class="res-desc">E-book de 20 páginas con los primeros pasos para potenciar tu energía emprendedora.</div>
+          </div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon">🎧</div>
+          <div>
+            <div class="res-title">Masterclass gratuita</div>
+            <div class="res-desc">Video de 45 min: "De la idea al negocio que amas" — acceso inmediato al registrarte.</div>
+          </div>
+        </div>
+        <div class="res-card">
+          <div class="res-icon">🗓️</div>
+          <div>
+            <div class="res-title">Sesión de claridad</div>
+            <div class="res-desc">Llamada exploratoria gratuita de 30 min para descubrir en qué nivel te encuentras hoy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-title">¿Lista para encender tu Aura?</div>
+    <div class="cta-sub">Agenda tu sesión de claridad gratuita y descubre tu próximo paso.</div>
+    <button class="cta-btn" onclick="alert('Contacta a LissriquelmeCoach para personalizar tu portafolio')">Personalizar mi portafolio ↗</button>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
